@@ -9,14 +9,14 @@ test('TS-06: la categoría "Hand Tools" muestra productos', async ({ page }) => 
   expect(await productos.count()).toBeGreaterThan(0);
 });
 
-test('TS-07: el detalle de un producto muestra su nombre', async ({ page }) => {
+test('TS-07: Ver detalle de producto', async ({ page }) => {
   await page.goto('/category/hand-tools');
   await page.locator('[data-test^="product-"]').first().click();
   await expect(page.getByTestId('product-name')).toBeVisible();
   await expect(page.getByTestId('product-name')).not.toHaveText('');
 });
 
-test('TS-08: búsqueda por el nombre real de un producto', async ({ page }) => {
+test('TS-08: Buscar producto por nombre', async ({ page }) => {
   await page.goto('/category/hand-tools');
   await page.locator('[data-test^="product-"]').first().click();
   const nombreProducto = (await page.getByTestId('product-name').innerText()).trim();
@@ -28,7 +28,7 @@ test('TS-08: búsqueda por el nombre real de un producto', async ({ page }) => {
   await expect(page.locator('[data-test^="product-"]').first()).toBeVisible();
 });
 
-test('TS-09: búsqueda sin resultados', async ({ page }) => {
+test('TS-09: Buscar producto inexistente', async ({ page }) => {
   await page.goto('/');
   await page.getByPlaceholder(/search/i).fill('zzxxqqww123nonexistente');
   await page.getByPlaceholder(/search/i).press('Enter');
