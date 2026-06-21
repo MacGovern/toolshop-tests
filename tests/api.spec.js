@@ -5,7 +5,7 @@ const { test, expect } = require('@playwright/test');
 
 const API_URL = 'https://api.practicesoftwaretesting.com';
 
-test('TS-15: login vía API devuelve un token', async ({ request }) => {
+test('TS-15: Iniciar sesión vía API', async ({ request }) => {
   const response = await request.post(`${API_URL}/users/login`, {
     data: { email: 'customer@practicesoftwaretesting.com', password: 'welcome01' },
   });
@@ -14,7 +14,7 @@ test('TS-15: login vía API devuelve un token', async ({ request }) => {
   expect(Object.keys(body).length).toBeGreaterThan(0);
 });
 
-test('TS-16: registro vía API crea un usuario nuevo', async ({ request }) => {
+test('TS-16: Registrar usuario vía API', async ({ request }) => {
   const email = `qa.api.test.${Date.now()}@correo.com`;
   const response = await request.post(`${API_URL}/users/register`, {
     data: {
@@ -36,19 +36,19 @@ test('TS-16: registro vía API crea un usuario nuevo', async ({ request }) => {
   expect(response.ok()).toBeTruthy();
 });
 
-test('TS-17: un endpoint protegido rechaza el acceso sin token', async ({ request }) => {
+test('TS-17: Verificar que el sistema rechaza el acceso a un endpoint sin token', async ({ request }) => {
   const response = await request.get(`${API_URL}/invoices`);
   expect(response.ok()).toBeFalsy();
 });
 
-test('TS-18: el listado de marcas es público (no requiere login)', async ({ request }) => {
+test('TS-18: Listar marcas sin token vía API)', async ({ request }) => {
   const response = await request.get(`${API_URL}/brands`);
   expect(response.ok()).toBeTruthy();
   const body = await response.json();
   expect(body).toBeTruthy();
 });
 
-test('TS-20: un cliente no puede eliminar una marca vía API (solo admin)', async ({ request }) => {
+test('TS-20: El sistema bloquea la eliminación de una marca por parte de un cliente', async ({ request }) => {
   const sufijo = Date.now();
   const creada = await request.post(`${API_URL}/brands`, {
     data: { name: `Marca de prueba ${sufijo}`, slug: `marca-prueba-${sufijo}` },
