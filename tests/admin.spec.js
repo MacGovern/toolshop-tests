@@ -4,7 +4,7 @@
 
 const { test, expect } = require('@playwright/test');
 
-test('TS-19: un administrador puede crear una marca', async ({ page }) => {
+test('TS-19: Crear una marca como administrador', async ({ page }) => {
   await page.goto('/auth/login');
   await page.getByTestId('email').fill('admin@practicesoftwaretesting.com');
   await page.getByTestId('password').fill('welcome01');
