@@ -17,23 +17,23 @@ async function login(page, email, password) {
   await expect(page.getByTestId('nav-sign-in')).not.toBeVisible();
 }
 
-test('TS-01: Login con credenciales válidas', async ({ page }) => {
+test('TS-01: Iniciar sesión con credenciales válidas', async ({ page }) => {
   await login(page, 'customer@practicesoftwaretesting.com', 'welcome01');
   await expect(page.getByTestId('nav-sign-in')).not.toBeVisible();
 });
 
-test('TS-02: Login con contraseña incorrecta', async ({ page }) => {
+test('TS-02: Rechazar login con contraseña incorrecta', async ({ page }) => {
   await intentarLogin(page, 'customer@practicesoftwaretesting.com', 'ClaveIncorrecta123');
   await expect(page.getByText(/invalid|incorrect|credentials/i)).toBeVisible();
 });
 
-test('TS-03: el usuario autenticado puede ver su sección de cuenta', async ({ page }) => {
+test('TS-03: Acceder a la sección de cuenta autenticada', async ({ page }) => {
   await login(page, 'customer@practicesoftwaretesting.com', 'welcome01');
   await page.goto('/account/invoices');
   await expect(page).toHaveURL(/account\/invoices/);
 });
 
-test('TS-04: registro de un nuevo usuario', async ({ page }) => {
+test('TS-04: Registrar un nuevo usuario', async ({ page }) => {
   const sufijo = Date.now();
   await page.goto('/auth/register');
   await page.getByTestId('first-name').fill('Test');
@@ -53,7 +53,7 @@ test('TS-04: registro de un nuevo usuario', async ({ page }) => {
   await expect(page).toHaveURL(/auth\/login/);
 });
 
-test('TS-05: un cliente no puede acceder al panel de administración', async ({ page }) => {
+test('TS-05: El sistema bloquea el acceso de un cliente al panel de administración', async ({ page }) => {
   await login(page, 'customer@practicesoftwaretesting.com', 'welcome01');
   await page.goto('/admin/brands/add');
   await expect(page.getByTestId('name')).not.toBeVisible();
