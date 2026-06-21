@@ -12,26 +12,26 @@ Siguiendo la indicación de la cátedra, se utilizó como plataforma sustituta *
 
 | ID | Caso | Archivo |
 |---|---|---|
-| TS-01 | Login con credenciales válidas | `auth.spec.js` |
-| TS-02 | Login con contraseña incorrecta | `auth.spec.js` |
-| TS-03 | Acceso a la sección de cuenta autenticada | `auth.spec.js` |
-| TS-04 | Registro de un nuevo usuario | `auth.spec.js` |
-| TS-05 | Control de acceso: un cliente no accede al panel de administración | `auth.spec.js` |
-| TS-06 | Listado de productos por categoría | `catalogo.spec.js` |
-| TS-07 | Detalle de producto | `catalogo.spec.js` |
-| TS-08 | Búsqueda por nombre de producto | `catalogo.spec.js` |
-| TS-09 | Búsqueda sin resultados | `catalogo.spec.js` |
-| TS-10 | Envío exitoso del formulario de contacto | `contacto.spec.js` |
-| TS-11 | El formulario de contacto rechaza un email inválido | `contacto.spec.js` |
+| TS-01 | Iniciar sesión con credenciales válidas | `auth.spec.js` |
+| TS-02 | Rechazar login con contraseña incorrecta | `auth.spec.js` |
+| TS-03 | Acceder a la sección de cuenta autenticada | `auth.spec.js` |
+| TS-04 | Registrar un nuevo usuario | `auth.spec.js` |
+| TS-05 | El sistema bloquea el acceso de un cliente al panel de administración | `auth.spec.js` |
+| TS-06 | Listar productos por categoría | `catalogo.spec.js` |
+| TS-07 | Ver detalle de producto | `catalogo.spec.js` |
+| TS-08 | Buscar producto por nombre | `catalogo.spec.js` |
+| TS-09 | Buscar producto inexistente | `catalogo.spec.js` |
+| TS-10 | Verificar que el sistema recibe el formulario de contacto | `contacto.spec.js` |
+| TS-11 | El sistema rechaza email inválido en formulario de contacto | `contacto.spec.js` |
 | TS-12 | Agregar un producto al carrito | `carrito.spec.js` |
 | TS-13 | Eliminar un producto del carrito | `carrito.spec.js` |
-| TS-14 | Cantidad alta (exploratorio) | `carrito.spec.js` |
-| TS-15 | Login vía API | `api.spec.js` |
-| TS-16 | Registro vía API | `api.spec.js` |
-| TS-17 | Endpoint protegido rechaza el acceso sin token | `api.spec.js` |
-| TS-18 | Listado público de marcas vía API | `api.spec.js` |
-| TS-19 | Un administrador puede crear una marca (UI) | `admin.spec.js` |
-| TS-20 | Un cliente no puede eliminar una marca vía API | `api.spec.js` |
+| TS-14 | Comprobar si existe límite máximo de cantidad para un producto dado | `carrito.spec.js` |
+| TS-15 | Iniciar sesión vía API | `api.spec.js` |
+| TS-16 | Registrar usuario vía API | `api.spec.js` |
+| TS-17 | Verificar que el sistema rechaza el acceso a un endpoint sin token | `api.spec.js` |
+| TS-18 | Listar marcas sin token vía API | `api.spec.js` |
+| TS-19 | Crear una marca como administrador | `admin.spec.js` |
+| TS-20 | El sistema bloquea la eliminación de una marca por parte de un cliente | `api.spec.js` |
 
 Cuentas de prueba públicas del entorno: `admin@practicesoftwaretesting.com` (rol administrador) y `customer@practicesoftwaretesting.com` (rol cliente), ambas con contraseña `welcome01`.
 
